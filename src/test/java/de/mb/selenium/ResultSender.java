@@ -12,6 +12,7 @@ public class ResultSender {
     
     public static void send(final TestStatus testStatus){
         try {
+            system.out.println("teststatus: " + OM.writeValueAsString(testStatus))
             Unirest.post(ELASTICSEARCH_URL)
                     .header(CONTENT_TYPE, CONTENT_TYPE_VALUE)
                     .body(OM.writeValueAsString(testStatus)).asJson();
